@@ -1,11 +1,12 @@
+import { NotesController } from "./controllers/NotesController.js";
 import { Router } from "./utils/Router.js";
 
 
 export const router = new Router([
   {
     path: '',
-    controllers: [],
-    view:``
+    controllers: [NotesController],
+    view: ``
 
   },
   {
