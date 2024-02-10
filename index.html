@@ -26,59 +26,12 @@
         <div class="col-1 m-1">
           <button class="btn btn-dark border border-light" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#Id1" aria-controls="Id1"><i class="mdi mdi-list-box"></i></button>
-
-          <div class="offcanvas offcanvas-end bg-dark text-light" data-bs-scroll="true" tabindex="-1" id="Id1"
-            aria-labelledby="Enable both scrolling & backdrop">
-            <div class="offcanvas-header">
-              <h4 class="offcanvas-title border-bottom border-2 border-light" id="Enable both scrolling & backdrop">My
-                Notes</h4>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div id="note" class="d-flex flex-column offcanvas-body">
-
-            </div>
-            <div class="m-3">
-              <form onsubmit="app.NotesController.createNote()">
-                <div class=" form-floating mb-3">
-                  <input type="text" class="form-control bg-black text-light" id="NotesTitle" placeholder="Title">
-                  <label for="NotesTitle">Title</label>
-                </div>
-                <select class="form-select mb-3 bg-black text-light" aria-label="FontType">
-                  <option selected>Font</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-                <div class="d-flex bg-black text-light align-items-center justify-content-between mb-3 p-2 rounded"
-                  style="width: 45%;">
-                  <label for="styleColor">Style Color:</label>
-                  <input type="color" name="color" id="styleColor" value="#ffffff">
-                </div>
-                <div class="d-flex justify-content-end">
-                  <button class=" btn bg-black border border-light text-light" type="submit">Create Note</button>
-                </div>
-              </form>
-            </div>
-          </div>
         </div>
       </div>
-    </div>
-    </div>
     </div>
   </header>
   <!-- SECTION -->
-  <main>
-
-    <section>
-      <div class="container-fluid bg-black
-      " style="height: 100vh;">
-        <div id="activeNote" class="row m-0 p-0 justify-content-center">
-
-
-        </div>
-      </div>
-
-    </section>
+  <main id="router-view">
 
   </main>
 

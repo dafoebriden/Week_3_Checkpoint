@@ -1,18 +1,23 @@
 import { AppState } from "../AppState.js"
-import { notesService } from "../services/NotesService.js"
+import { notesService } from "../services/NotesService.js";
+import { getFormData } from "../utils/FormHandler.js";
+import { Pop } from "../utils/Pop.js";
 import { setHTML } from "../utils/Writer.js"
+
+
+
 
 
 function _drawNotes() {
     const notes = AppState.notes
     let htmlString = ''
     notes.forEach(note => htmlString += note.ListHTMLTemplate)
-    setHTML('notesList', htmlString)
+    setHTML('note', htmlString)
 }
 
 function _drawActiveNote() {
     const note = AppState.activeNote
-    setHTML('activeNote', note.ActiveNoteHTMLTemplate)
+    setHTML('NoteTextArea', note.ActiveNoteHTMLTemplate)
 }
 
 export class NotesController {
@@ -22,13 +27,27 @@ export class NotesController {
         AppState.on('activeNote', _drawActiveNote)
     }
     setActiveNote(noteId) {
+        notesService.setActiveNote(noteId)
     }
 
     updateNote() {
-        const noteElement = document.getElementById('NoteTextArea')
+        const textAreaElement = document.getElementById('NoteTextArea')
 
-        const updateNoteBody = noteElement.value
-        notesService.updateNote(updateNoteBody)
+        const updatedNoteBody = textAreaElement.value
+        notesService.updateNote(updatedNoteBody)
+    }
+
+    createNote() {
+        try {
+            event.preventDefault()
+            const form = event.target
+            const noteFormData = getFormData(form)
+            notesService.createNote(noteFormData)
+
+        } catch (error) {
+            console.error(error)
+            Pop.error(error)
+        }
     }
 
 }

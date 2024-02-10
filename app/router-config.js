@@ -8,9 +8,5 @@ export const router = new Router([
     controllers: [NotesController],
     view: ``
 
-  },
-  {
-    path: '#/about',
-    view: 'app/views/AboutView.html'
   }
 ])

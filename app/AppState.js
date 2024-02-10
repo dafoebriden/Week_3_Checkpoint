@@ -1,4 +1,4 @@
-import { Notes } from './models/Notes.js'
+import { Note } from './models/Notes.js'
 import { EventEmitter } from './utils/EventEmitter.js'
 import { createObservableProxy } from './utils/ObservableProxy.js'
 
@@ -8,7 +8,7 @@ class ObservableAppState extends EventEmitter {
   notes = []
 
 
-  /** @type {ActiveNote | null} */
+  /** @type {Note | null} */
   activeNote = null
 }
 export const AppState = createObservableProxy(new ObservableAppState()) 

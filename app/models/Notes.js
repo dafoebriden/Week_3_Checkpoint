@@ -3,13 +3,21 @@ import { generateId } from "../utils/GenerateId.js"
 export class Note {
     constructor(data) {
         this.id = data.id || generateId()
-        this.title = data.title || 'New Note'
+        this.title = data.title
         this.bgStyle = data.bgStyle || 'bg-white'
         this.body = data.body || ''
         this.createdAt = data.createdAt == undefined ? new Date() : new Date(data.createdAt)
         this.lastAccessed = data.lastAccessed ? new Date(data.lastAccessed) : new Date()
-        this.words = data.body.split(' ').length
-        this.characters = data.body.length
+        if (data && data.body) {
+            this.characters = data.body.length;
+        } else {
+            this.characters = 0;
+        }
+        if (data && data.body) {
+            this.words = data.body.split(' ').length;
+        } else {
+            this.words = 0;
+        }
     }
 
     get ListHTMLTemplate() {
@@ -17,8 +25,8 @@ export class Note {
         <div class="d-flex align-items-center">
             <i class="mdi mdi-circle"></i>
             <div onclick="app.NotesController.setActiveNote('${this.id}')" class="d-flex border border-2 border-light rounded bg-danger m-3 p-2" type="button">
-                <span id="Title" class="fw-bold me-2">${this.title}</span>
-                <span id="dateCreated">${this.CreatedAtDate}</span>
+                <span id="title" class="fw-bold me-2">${this.title}</span>
+                <span id="createdAt">${this.CreatedAtDate}</span>
             </div>
         </div>
     `
@@ -42,7 +50,7 @@ export class Note {
                 </div>
                 <div class="d-flex justify-content-center mb-4 m">
                     <textarea id="NoteTextArea" class=" shadow-light rounded m-0 p-1" style="width: 90%;" name="body"
-                        id="NoteTextArea" rows="20" placeholder=" Your Notes Here"></textarea>
+                        rows="20" placeholder="Your Notes Here">${this.body}</textarea>
                 </div>
             </div>
         </div>
