@@ -17,7 +17,7 @@ function _drawNotes() {
 
 function _drawActiveNote() {
     const note = AppState.activeNote
-    setHTML('NoteTextArea', note.ActiveNoteHTMLTemplate)
+    setHTML('activeNote', note.ActiveNoteHTMLTemplate)
 }
 
 export class NotesController {
@@ -43,7 +43,6 @@ export class NotesController {
             const form = event.target
             const noteFormData = getFormData(form)
             notesService.createNote(noteFormData)
-
         } catch (error) {
             console.error(error)
             Pop.error(error)

@@ -7,6 +7,7 @@ import { loadState, saveState } from "../utils/Store.js";
 
 function _saveNotes() {
     saveState('notes', AppState.notes)
+    saveState('activeNote', AppState.activeNote)
 }
 
 function _loadNotes() {

@@ -6,7 +6,7 @@ export const router = new Router([
   {
     path: '',
     controllers: [NotesController],
-    view: ``
+    view: 'app/views/NotesView.html'
 
   }
 ])
