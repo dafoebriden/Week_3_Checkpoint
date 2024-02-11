@@ -31,8 +31,8 @@ class NotesService {
         activeNote.lastAccessed = new Date()
         activeNote.words = updateNoteBody.split(' ').length
         activeNote.characters = updateNoteBody.length
-        _saveNotes()
         AppState.emit('activeNote')
+        _saveNotes()
     }
     createNote(noteFormData) {
         const newNote = new Note(noteFormData)

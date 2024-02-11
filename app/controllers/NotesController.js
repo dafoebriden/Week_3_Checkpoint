@@ -31,10 +31,9 @@ export class NotesController {
     }
 
     updateNote() {
-        const textAreaElement = document.getElementById('NoteTextArea')
-
+        const textAreaElement = document.getElementById('noteBody');
         const updatedNoteBody = textAreaElement.value
-        notesService.updateNote(updatedNoteBody)
+        notesService.updateNote(updatedNoteBody);
     }
 
     createNote() {
