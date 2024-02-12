@@ -55,6 +55,7 @@ export class Note {
                     <textarea onblur="app.NotesController.updateNote()" id="noteBody" class="shadow-light rounded m-0 p-1" style="width: 90%;" value="noteBody" name="noteBody"
                         rows="20" placeholder="Your Notes Here">${this.noteBody}</textarea>
                 </div>
+                <button class="btn btn-danger w-25" onclick="app.NotesController.deleteNote()">Delete Note</button>
             </div>
         </div>
     `

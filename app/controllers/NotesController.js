@@ -51,4 +51,12 @@ export class NotesController {
         }
     }
 
+    deleteNote() {
+        notesService.deleteNote()
+        const wantsToRemove = window.confirm('Are you sure you want to delete this note?')
+
+        if (!wantsToRemove) {
+            return
+        }
+    }
 }
