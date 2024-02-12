@@ -6,19 +6,14 @@ export class Note {
         this.title = data.title
         this.bgStyle = data.bgStyle || '0x000000'
         this.noteBody = data.noteBody || ''
-        this.createdAt = data.createdAt == undefined ? new Date() : new Date(data.createdAt)
+        // TRUTHY VS FALSY
+        // mdn truthy
+        // https://developer.mozilla.org/en-US/docs/Glossary/Truthy
+        // https://developer.mozilla.org/en-US/docs/Glossary/Falsy
+        this.createdAt = data.createdAt ? new Date(data.createdAt) : new Date()
         this.lastAccessed = new Date()
-        if (data && data.body) {
-            this.characters = data.body.length;
-        } else {
-            this.characters = 0
-        }
-        if (data && data.body) {
-            this.words = data.body.split(' ').length;
-        } else {
-            this.words = 0;
-        }
-
+        this.characters = this.noteBody.length;
+        this.words = this.noteBody ? this.noteBody.split(' ').length : 0;
     }
 
     get ListHTMLTemplate() {
@@ -39,7 +34,7 @@ export class Note {
             <div class="d-flex flex-column justify-content-between rounded mx-5 my-3 p-2">
                 <div class="d-flex justify-content-between mb-3 text-light">
                     <div class="d-flex align-items-center p-2" >
-                        <span style"color:${this.invertedBgStyle};background-color:${this.bgStyle}">
+                        <span style="color:${this.invertedBgStyle};background-color:${this.bgStyle}">
                             <h2 class="m-0 p-0">${this.title}</h2>
                         </span>
                     </div>

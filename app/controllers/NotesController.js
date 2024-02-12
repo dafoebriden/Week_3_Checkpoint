@@ -17,6 +17,9 @@ function _drawNotes() {
 
 function _drawActiveNote() {
     const note = AppState.activeNote
+    if (!note) {
+        return setHTML('activeNote', '<div class="text-center">create or pick a note from the sidebar</div>')
+    }
     setHTML('activeNote', note.ActiveNoteHTMLTemplate)
 
 }
@@ -52,11 +55,12 @@ export class NotesController {
     }
 
     deleteNote() {
-        notesService.deleteNote()
+
         const wantsToRemove = window.confirm('Are you sure you want to delete this note?')
 
         if (!wantsToRemove) {
             return
         }
+        notesService.deleteNote()
     }
 }

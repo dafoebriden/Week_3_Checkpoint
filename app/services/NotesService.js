@@ -44,9 +44,8 @@ class NotesService {
     deleteNote() {
         const noteIndex = AppState.notes.findIndex(note => note.id == AppState.activeNote.id)
         AppState.notes.splice(noteIndex, 1)
-        AppState.activeNote = null
         _saveNotes()
-        _loadNotes()
+        AppState.activeNote = null
     }
 
 }
