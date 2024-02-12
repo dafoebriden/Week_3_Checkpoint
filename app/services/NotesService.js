@@ -27,18 +27,27 @@ class NotesService {
 
     updateNote(updateNoteBody) {
         const activeNote = AppState.activeNote
-        activeNote.body = updateNoteBody
+
+        activeNote.noteBody = updateNoteBody
         activeNote.lastAccessed = new Date()
         activeNote.words = updateNoteBody.split(' ').length
         activeNote.characters = updateNoteBody.length
-        AppState.emit('activeNote')
         _saveNotes()
+        AppState.emit('activeNote')
+
     }
     createNote(noteFormData) {
         const newNote = new Note(noteFormData)
         AppState.notes.push(newNote)
         _saveNotes()
     }
+    deleteNote() {
+        const index = AppState.notes.findIndex(note => note.id == AppState.activeNote.id)
+        AppState.notes.splice(index, 1)
+        AppState.activeNote = null
+        _saveNotes()
+    }
+
 }
 
 

@@ -18,6 +18,7 @@ function _drawNotes() {
 function _drawActiveNote() {
     const note = AppState.activeNote
     setHTML('activeNote', note.ActiveNoteHTMLTemplate)
+
 }
 
 export class NotesController {
@@ -29,11 +30,13 @@ export class NotesController {
     setActiveNote(noteId) {
         notesService.setActiveNote(noteId)
     }
-
     updateNote() {
         const textAreaElement = document.getElementById('noteBody');
         const updatedNoteBody = textAreaElement.value
+
         notesService.updateNote(updatedNoteBody);
+
+
     }
 
     createNote() {
